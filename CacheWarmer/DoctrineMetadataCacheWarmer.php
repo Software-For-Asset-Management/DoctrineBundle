@@ -22,8 +22,10 @@ class DoctrineMetadataCacheWarmer extends AbstractPhpFileCacheWarmer
 
     /**
      * @param string $cacheDir
+     *
+     * @return bool false if there is nothing to warm-up
      */
-    protected function doWarmUp($cacheDir, ArrayAdapter $arrayAdapter): bool
+    protected function doWarmUp($cacheDir, ArrayAdapter $arrayAdapter)
     {
         $metadataFactory = new ClassMetadataFactory();
         $metadataFactory->setEntityManager($this->entityManager);
